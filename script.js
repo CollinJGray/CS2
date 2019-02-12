@@ -43,6 +43,10 @@ bslider.oninput = function() {
 	blue = this.value
 }
 
+function warp() {
+	posy = 0;
+}
+
 function handler(event) {
 	key = event.key
 	switch(key) {
@@ -122,4 +126,4 @@ setInterval(function() {
 
 	ctx.fillStyle = "rgb("+red+","+green+","+blue+")" //Draw the block
 	ctx.fillRect(posx, posy, width, height)
-}, 50);
+}, 20);
