@@ -1,3 +1,58 @@
-.window {
+body {
+	background-color: black;
+}
+
+h1 {
+	outline-style: double;
+	outline-color: white;
+	padding: 10px;
+	line-height: 50px;
+	margin-left: auto;
+	margin-right: auto;
+	width: 380px;
+	text-align: center;
+	color: white;
+}
+
+h3 {
+	color: white;
+	text-align: center;
+}
+
+#instructions {
+	float: left;
+	margin-left: 20px;
+	outline-style: double;
+	outline-color: white;
+	padding: 10px
+}
+
+p {
+	text-align: center;
+	color: white;
+}
+
+#window {
 	margin: auto;
+	display: block;
+	outline-style: double;
+	outline-color: white;
+}
+
+#sliderblock {
+	margin-left: 50px;
+	display: block;
+	outline-style: double;
+	outline-color: white;
+	max-width: 180px
+}
+
+.slider {
+	-webkit-appearance: none;
+	background: #FF0000;
+}
+
+#rvalue {
+	-webkit-appearance: none;
+	background: #FF0000;
 }

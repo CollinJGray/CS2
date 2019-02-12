@@ -1,9 +1,29 @@
 <html>
 	<head>
-		<title>T I T L E</title>
+		<meta charset="utf-8"/>
+		<title>garbage</title>
+		<link rel="stylesheet" href="./style.css">
 	</head>
 
 	<body>
-		<canvas id="window" width = 400 height = 400></window>
+		<h1>garbage</h1>
+		<div id="instructions">
+			<h3>Instructions</h3>
+			<p>Move left and right with A and D/U</p>
+			<p>Jump with Space</p>
+			<p>Change the color of your block using<br> the sliders in the bottom left</p>
+			<p>Change the size of your block using<br> the sliders in the bottom center</p>
+			<p>Use the warp button to warp to the<br> top of the screen</p>
+			<p>Your block passes through blocks<br> of the same color</p>
+			<p>Reach the purple circles to advance<p>
+		</div>
+		<canvas id="window" width = 400 height = 400></canvas>
+		<div id="sliderblock">
+		<p>Block color<p>
+		<input type="range" min="0" max="255" value="255" id="red"><p id="rvalue" class="slider"></p>
+		<input type="range" min="0" max="255" value="0" id="green"><p id="gvalue" class="slider"></p>
+		<input type="range" min="0" max="255" value="0" id="blue"><p id="bvalue" class="slider"></p>
+		</div>
+		<script src="./script.js"></script>
 	</body>
 </html>
