@@ -16,7 +16,7 @@ var height = 20
 var red = 255
 var green = 0
 var blue = 0
-var stage = 0
+var stage = 2
 
 var rslider = document.getElementById("red")
 var gslider = document.getElementById("green")
@@ -82,7 +82,9 @@ function ApplyXClips(x) {
 	switch(stage) {
 		case 0:
 			if(x>=350-width) {
+				posy=350-height
 				stage=1
+				return 0
 			} else if(posy<=150-height) {
 				return x
 			} else {
@@ -90,8 +92,39 @@ function ApplyXClips(x) {
 			}
 			break;
 		case 1:
+			if(x>=350-width) {
+				stage=2
+				return 0
+			}
+			return x;
 			break;
 		case 2:
+			if(x>=350) {
+				stage=0
+				return 0
+			} else if(blue>=200&&red+green<=50) {
+				if(x>=125) {
+					return Math.max(x, 150)
+				} else {
+					return Math.min(x, 100-width)
+				}
+			} else if(red>=200&&blue+green<=50) {
+				if(x>=250) {
+					return Math.max(x, 275)
+				} else {
+					return Math.min(225-width, x)
+				}
+			} else {
+				if(x>=250) {
+					return Math.max(x, 275)
+				} else if(x>=125) {
+					return Math.min(Math.max(x, 150), 225-width)
+				} else {
+					return Math.min(x, 100-width)
+				}
+			}
+
+			return x
 			break;
 		case 3:
 			break;
@@ -118,12 +151,23 @@ function ApplyYClips(y) {
 			}
 			break;
 		case 1:
+			if(posx<=125||posx>=275-width) {
+				if(y>=350-height) {
+					vely = 0
+				}
+				return Math.min(y, 350-height)
+			} else if(y>=400-height) {
+				posx=0
+				return 350-height
+			} else {
+				return y
+			}
 			break;
 		case 2:
+			vely=0
+			return 350-height
 			break;
 		case 3:
-			break;
-		case 4:
 			break;
 	}		
 }
@@ -153,9 +197,6 @@ function RenderLevel() {
 		case 3:
 			Render3();
 			break;
-		case 4:
-			Render4();
-			break;
 	}
 }
 
@@ -165,30 +206,43 @@ function Render0() {
 	ctx.fillRect(0, 350, 400, 50)
 	ctx.fillRect(200, 150, 200, 50)
 	ctx.fillRect(300, 150, 200, 200)
-	ctx.fillStyle = "purple"
+	ctx.fillStyle = "green"
 	ctx.beginPath();
 	ctx.arc(350, 130, 15, 0, 2*Math.PI);
 	ctx.fill();
 }
 
 function Render1() {
-
+	ctx.fillStyle = "white"
+	ctx.fillRect(0, 350, 125, 50)
+	ctx.fillRect(275, 350, 125, 50)
+	ctx.fillStyle = "green"
+	ctx.beginPath();
+	ctx.arc(350, 325, 15, 0, 2*Math.PI);
+	ctx.fill();
 }
 
 function Render2() {
-
+	ctx.fillStyle = "red"
+	ctx.fillRect(100, 0, 50, 400)
+	ctx.fillStyle = "blue"
+	ctx.fillRect(225, 0, 50, 400)
+	ctx.fillStyle = "white"
+	ctx.fillRect(0, 350, 400, 50)
+	ctx.fillStyle = "green"
+	ctx.beginPath();
+	ctx.arc(350, 325, 15, 0, 2*Math.PI);
+	ctx.fill();
 }
 
 function Render3() {
 
 }
 
-function Render4() {
-
-}
-
 setInterval(function() {
 	UpdatePosition()
+
+	console.log(posx + ", " + posy)
 
 	ctx.fillStyle = "black" //Redraw the background
 	ctx.fillRect(0, 0, 400, 400)
