@@ -16,7 +16,7 @@ var height = 20
 var red = 255
 var green = 0
 var blue = 0
-var stage = 2
+var stage = 0
 
 var rslider = document.getElementById("red")
 var gslider = document.getElementById("green")
@@ -41,6 +41,14 @@ gslider.oninput = function() {
 bslider.oninput = function() {
 	bdisplay.innerHTML = this.value
 	blue = this.value
+}
+
+widthinput.oninput = function() {
+	width = this.value
+}
+
+heightinput.oninput = function() {
+	height = this.value
 }
 
 function warp() {
@@ -99,7 +107,7 @@ function ApplyXClips(x) {
 			return x;
 			break;
 		case 2:
-			if(x>=350) {
+			if(x>=350-width) {
 				stage=0
 				return 0
 			} else if(blue>=200&&red+green<=50) {
@@ -164,8 +172,10 @@ function ApplyYClips(y) {
 			}
 			break;
 		case 2:
-			vely=0
-			return 350-height
+			if(y>=350-height) {
+				vely=0
+			}
+			return Math.min(350-height, y)
 			break;
 		case 3:
 			break;

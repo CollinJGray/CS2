@@ -10,20 +10,23 @@
 		<div id="instructions">
 			<h3>Instructions</h3>
 			<p>Move left and right with A and D/U</p>
-			<p>Jump with Space</p>
 			<p>Change the color of your block using<br> the sliders in the bottom left</p>
 			<p>Change the size of your block using<br> the sliders in the bottom center</p>
 			<p>Use the warp button to warp to the<br> top of the screen</p>
 			<p>Your block passes through blocks<br> of the same color</p>
-			<p>Reach the purple circles to advance<p>
+			<p>Reach the green circles to advance</p>
 		</div>
 		<button id="warp" onclick="warp()">Warp!</button>
 		<canvas id="window" width = 400 height = 400></canvas>
+		<div id="dimensions">
+		Width: <input type="range" min="2" max="150" value="20" id="widthinput"><br>
+		Height:<input type="range" min="2" max="150" value="20" id="heightinput">
+		</div>
 		<div id="sliderblock">
 		<p>Block color<p>
-		<input type="range" min="0" max="255" value="255" id="red"><p id="rvalue" class="slider"></p>
-		<input type="range" min="0" max="255" value="0" id="green"><p id="gvalue" class="slider"></p>
-		<input type="range" min="0" max="255" value="0" id="blue"><p id="bvalue" class="slider"></p>
+		<input type="range" min="0" max="255" value="255" id="red">
+		<input type="range" min="0" max="255" value="0" id="green">
+		<input type="range" min="0" max="255" value="0" id="blue">
 		</div>
 		<script src="./script.js"></script>
 	</body>

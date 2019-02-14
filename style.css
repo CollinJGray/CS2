@@ -57,12 +57,26 @@ p {
 	max-width: 180px
 }
 
-.slider {
+#dimensions {
+	outline-style: double;
+	outline-color: white;
+	float: right;
+	margin: 60px;
+	padding: 10px;
+	color: white;
+}
+
+#red {
 	-webkit-appearance: none;
 	background: #FF0000;
 }
 
-#rvalue {
+#green {
 	-webkit-appearance: none;
-	background: #FF0000;
+	background: #00FF00;
+}
+
+#blue {
+	-webkit-appearance: none;
+	background: #0000FF;
 }
