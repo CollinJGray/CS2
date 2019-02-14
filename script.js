@@ -57,11 +57,11 @@ function handler(event) {
 		case "e":
 			velx = 5
 			break;
-		case " ": //Jump
+		/*case " ": //Jump
 			if(posy == 400-height) {
 				vely = -10;
 			}
-			break;
+			break;*/
 		default:
 			break;
 	}
@@ -78,9 +78,52 @@ function uphandler(event) {
 	}
 }
 
+function ApplyXClips(x) {
+	switch(stage) {
+		case 0:
+			if(posy<=150-height) {
+				return x
+			} else {
+				return Math.min(x, 300-width)
+			}
+			break;
+		case 1:
+			break;
+		case 2:
+			break;
+		case 3:
+			break;
+		case 4:
+			break;
+	}		
+}
+
+function ApplyYClips(y) {
+	switch(stage) {
+		case 0:
+			if(y<=180-height&&posx>=200-width) {
+				if(y>=150-height) {
+					vely=0
+				}
+				return Math.min(y, 150-height)
+			} else {
+				return Math.max(y, y)
+			}
+			break;
+		case 1:
+			break;
+		case 2:
+			break;
+		case 3:
+			break;
+		case 4:
+			break;
+	}		
+}
+
 function UpdatePosition() {
-	posx=Math.min(Math.max(posx+velx, 0), 400-width)
-	posy=Math.min(Math.max(posy+vely, 0), 400-height)
+	posx=ApplyXClips(Math.min(Math.max(posx+velx, 0), 400-width))
+	posy=ApplyYClips(Math.min(Math.max(posy+vely, 0), 400-height))
 	
 	if(posy == 400-height) {
 		vely=0
@@ -88,6 +131,27 @@ function UpdatePosition() {
 		vely+=1
 	}
 }
+
+function RenderLevel() {
+	switch(stage) {
+		case 0:
+			Render0();
+			break;
+		case 1:
+			Render1();
+			break;
+		case 2:
+			Render2();
+			break;
+		case 3:
+			Render3();
+			break;
+		case 4:
+			Render4();
+			break;
+	}
+}
+
 
 function Render0() {
 	ctx.fillStyle = "white"
@@ -122,8 +186,8 @@ setInterval(function() {
 	ctx.fillStyle = "black" //Redraw the background
 	ctx.fillRect(0, 0, 400, 400)
 	
-	Render0();
-
+	RenderLevel();
+	
 	ctx.fillStyle = "rgb("+red+","+green+","+blue+")" //Draw the block
 	ctx.fillRect(posx, posy, width, height)
 }, 20);
