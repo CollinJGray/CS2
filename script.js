@@ -81,7 +81,9 @@ function uphandler(event) {
 function ApplyXClips(x) {
 	switch(stage) {
 		case 0:
-			if(posy<=150-height) {
+			if(x>=350-width) {
+				stage=1
+			} else if(posy<=150-height) {
 				return x
 			} else {
 				return Math.min(x, 300-width)
@@ -106,8 +108,13 @@ function ApplyYClips(y) {
 					vely=0
 				}
 				return Math.min(y, 150-height)
+			} if(y>=340-height) {
+				if(y>=350-height) {
+					vely=0
+				}
+				return Math.min(y, 350-height)
 			} else {
-				return Math.max(y, y)
+				return y
 			}
 			break;
 		case 1:
